@@ -3,10 +3,9 @@ import axios from "axios";
 import { ipofserver } from "../global";
 import "./FileUpload2.css";
 import Modal from "react-modal";
-import { SHA256 } from 'crypto-js';
 
 async function uploadImageToServer(blob, contract, account, provider, setUploadProgress) {
-  const visual_as_file = new File([blob], "imagefile.jpg", {
+  const visual_as_file = new File([blob], "EncryptedImageFile.jpg", {
     type: "image/jpg"
   });
 
@@ -31,7 +30,7 @@ async function uploadImageToServer(blob, contract, account, provider, setUploadP
 
     const ImgHash = `ipfs://${resFile.data.IpfsHash}`;
     const signer = contract.connect(provider.getSigner());
-    await signer.add(account, ImgHash); // Wait for the blockchain transaction to complete
+    await signer.add(account, ImgHash);
   } catch (e) {
     console.log(e);
   }
@@ -45,7 +44,6 @@ const FileUpload = ({ contract, account, provider }) => {
   const [waitingForTransaction, setWaitingForTransaction] = useState(false);
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
     if (file) {
       setModalIsOpen(true);
@@ -81,7 +79,6 @@ const FileUpload = ({ contract, account, provider }) => {
           setModalIsOpen(false);
         });
     }
-
   };
 
   const retrieveFile = (e) => {
