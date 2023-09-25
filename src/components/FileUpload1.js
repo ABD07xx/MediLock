@@ -18,8 +18,8 @@ async function uploadImageToServer(blob, contract, account, provider, setUploadP
       url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
       data: formData,
       headers: {
-        pinata_api_key: `64a21e90830e7435b3da`,
-        pinata_secret_api_key: `6f33592c21da0c26416f30277c81f3496a2bb97aa605de9150d26825082a9dc8`,
+        pinata_api_key: `122nk2481n1lej12409`,
+        pinata_secret_api_key: `4142u12uoind198418dj138r130r8j23m81dru10rj103fj109ru183dj09rj`,
         "Content-Type": "multipart/form-data"
       },
       onUploadProgress: (progressEvent) => {
